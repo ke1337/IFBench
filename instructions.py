@@ -872,6 +872,8 @@ class EmojiSentenceChecker(Instruction):
 			if not emoji.is_emoji(last_char) and not emoji.is_emoji(second_last_char):
 				if i < len(sentences) - 1:
 					stripped = sentences[i + 1].translate(str.maketrans('', '', string.punctuation)).strip()
+					if len(stripped) == 0:
+						return False
 					first_char = stripped[0]
 					if not emoji.is_emoji(first_char):
 						return False
